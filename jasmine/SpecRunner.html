@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="shortcut icon" type="image/png" href="spec/jasmine/jasmine_favicon.png">
+
+  <link rel="stylesheet" type="text/css" href="spec/jasmine/jasmine.css">
+  <script type="text/javascript" src="spec/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="spec/jasmine/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/demo.js"></script>
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/demoSpec.js"></script>
+
+  <script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv(); //the running environment of jasmine (a singleton pattern )
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter(); //display test results of jasmine
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute(); //run the jasmineEnv. The execute ();Can see the results
+      }
+
+    })();
+
+    
+  </script>
+
+</head>
+
+<body>
+</body>
+</html>
